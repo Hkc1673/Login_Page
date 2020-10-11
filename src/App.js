@@ -1,8 +1,12 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView } from 'react-native';
 
 const App = () => {
   return (
+    <KeyboardAvoidingView style={{flex:1}}
+    behavior={Platform.OS == 'android' ? null : "padding"}>
+      <ScrollView style={{flex:1}}
+                  bounces={false}>
       <View style={styles.container}>
         <View>
           <Image style={styles.img} source={require('./image/sepet.png')} />
@@ -10,22 +14,23 @@ const App = () => {
 
         <View >
           <TextInput placeholder= "Enter Your Email..." keyboardType = "email-address" style={styles.inputstyle}/>
-      </View>
+        </View>
 
-      <View>
+        <View>
           <TextInput placeholder= "Enter Your Password..." keyboardType = "number-pad" style={styles.inputstyle}/>
-      </View>
+        </View>
 
-      <View>
-        <TouchableOpacity >
-          <Text style={styles.button}>Login</Text>
-        </TouchableOpacity>
-        <TouchableOpacity >
-          <Text style={styles.button}>Register</Text>
-        </TouchableOpacity>
+        <View  style={{marginBottom:210}}>
+          <TouchableOpacity >
+            <Text style={styles.button}>Login</Text>
+          </TouchableOpacity>
+          <TouchableOpacity >
+            <Text style={styles.button}>Register</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-
-      </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
